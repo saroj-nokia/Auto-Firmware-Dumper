@@ -93,6 +93,11 @@ jobs:
         git config --global http.postBuffer 524288000
         git config --global http.lowSpeedLimit 0
         git config --global http.lowSpeedTime 999999
+        git lfs install
+        git lfs track "*.bin"
+        git add .gitattributes
+        git commit -m "Track binary files with Git LFS"
+        git push origin main
         unset GITHUB_TOKEN
         gh auth login --with-token <<< "${{ secrets.GTOKEN }}"
 
